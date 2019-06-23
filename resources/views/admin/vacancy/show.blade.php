@@ -43,8 +43,10 @@
                         {{-- Table --}}
 
                         <div class="row">
+                            @if(Auth::User()->role=="ADMIN")
                             <a href="{{action('ApplicantController@ShowPreCalculated',$vacancy->id)}}" class="btn btn-primary">Pelamar Masuk</a> &nbsp
                             <a href="{{action('ApplicantController@ShowCalculated',$vacancy->id)}}" class="btn btn-info">Pelamar Terproses</a> &nbsp
+                            @endif
                             <a href="{{action('ApplicantController@printOut',$vacancy->id)}}" class="btn btn-warning">Cetak</a> &nbsp
                         </div>
                         <br><br>

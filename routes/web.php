@@ -34,10 +34,10 @@ Route::group(['prefix'=>'company','middleware'=>'auth'],function (){
 
         Route::resource('applicant','ApplicantController');
         Route::get('print/{id}','ApplicantController@printOut');
+        Route::resource('lowongan','VacancyController');
 
         Route::group(['prefix'=>'admin','middleware'=>'admin'],function (){
 
-            Route::resource('lowongan','VacancyController');
             Route::resource('psychotest','PsychoTestController');
             Route::resource('scoringType','ScoringTypeController');
             Route::resource('config/scoringValue','ScoringValueController');

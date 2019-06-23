@@ -8,16 +8,18 @@
                     <span class="sidebar-title">Home</span>
                 </a>
             </li>
-            <li>
-                <a href="{{action('PsychoTestController@index')}}">
-                    <span class="sidebar-icon"><i class="fa fa-newspaper-o"></i></span>
-                    <span class="sidebar-title">Psikotest</span>
-                </a>
-            </li>
+
             <li>
                 <a href="{{action('VacancyController@index')}}">
                     <span class="sidebar-icon"><i class="fa fa-database"></i></span>
                     <span class="sidebar-title">Lowongan</span>
+                </a>
+            </li>
+            @if(Auth::User()->role=="ADMIN")
+            <li>
+                <a href="{{action('PsychoTestController@index')}}">
+                    <span class="sidebar-icon"><i class="fa fa-newspaper-o"></i></span>
+                    <span class="sidebar-title">Psikotest</span>
                 </a>
             </li>
             <li>
@@ -26,6 +28,7 @@
                     <span class="sidebar-title">Config</span>
                 </a>
             </li>
+            @endif
         </ul>
     </aside>
 </div>

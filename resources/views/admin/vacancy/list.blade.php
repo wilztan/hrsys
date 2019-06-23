@@ -9,8 +9,10 @@
 
                     <div class="card-body">
 
-                        <a href="{{action('VacancyController@create')}}" class="btn btn-primary">Tambah Lowongan</a>
 
+                        @if(Auth::User()->role=="ADMIN")
+                        <a href="{{action('VacancyController@create')}}" class="btn btn-primary">Tambah Lowongan</a>
+                        @endif
                         <br><br>
 
                         <table class="table">
@@ -28,12 +30,14 @@
                                         <td>@if(strtotime($item->close_date) < time()) CLOSED @else OPEN @endif</td>
                                         <td class="row">
                                             <a href="{{action('VacancyController@show',$item->id)}}" class="btn btn-info">Show</a>&nbsp
+                                            @if(Auth::User()->role=="ADMIN")
                                             <a href="{{action('VacancyController@edit',$item->id)}}" class="btn btn-warning">Update</a>&nbsp
                                             <form action="{{action('VacancyController@destroy',$item->id)}}" method="POST">
                                                 @csrf
                                                 {{ method_field('DELETE') }}
                                                 <button type="submit" class="btn btn-danger">DELETE</button>
                                             </form>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
